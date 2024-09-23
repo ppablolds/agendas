@@ -1,7 +1,7 @@
 // biome-ignore lint/style/useImportType: <explanation>
 import fastify, { FastifyInstance } from "fastify";
 
-const app: FastifyInstance = fastify({ logger: true });
+const app: FastifyInstance = fastify();
 
 app.listen(
 	{
