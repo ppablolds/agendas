@@ -9,7 +9,7 @@ Esta é a documentação de requisitos para a API de Agenda de Contatos. Esta AP
 
 ## Requisitos Funcionais
 
-- [ ] Cadastro de Contatos
+- [ X ] Cadastro de Contatos
 - [ ] Visualização de Contatos
 - [ ] Atualização de Contatos
 - [ ] Exclusão de Contatos
