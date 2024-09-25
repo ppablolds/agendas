@@ -1,5 +1,6 @@
 // biome-ignore lint/style/useImportType: <explanation>
 import {
+	Contact,
 	ContactRepository,
 	CreateContact,
 } from "../interfaces/contact.interface";
@@ -55,5 +56,15 @@ export class ContactUserCase {
 		const contacts = await this.contactRepository.findAllContacts(user.id);
 
 		return contacts;
+	}
+
+	async updateContact({ id, email, name, phone }: Contact) {
+		const data = await this.contactRepository.updateContact({
+			id,
+			email,
+			name,
+			phone,
+		});
+		return data;
 	}
 }
