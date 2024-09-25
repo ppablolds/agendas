@@ -53,4 +53,13 @@ export async function contactRoutes(fastify: FastifyInstance) {
 			}
 		},
 	);
+	fastify.delete<{Params: {id: string}}>("/:id", async (req, replay) => {
+		const {id} = req.params;
+		try {
+			const data = await contactUseCase.deleteContact(id);
+			return replay.send(data);
+		} catch (error) {
+			replay.send(error);
+		}
+	});
 }

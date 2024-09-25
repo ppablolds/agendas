@@ -52,4 +52,14 @@ export class ContactRepositoryPrisma implements ContactRepository {
 		});
 		return result;
 	}
+
+	async deleteContact(id: string): Promise<boolean> {
+		const result = await prisma.contacts.delete({
+			where: {
+				id,
+			},
+		});
+		// biome-ignore lint/complexity/noUselessTernary: <explanation>
+		return result ? true : false;
+	}
 }
