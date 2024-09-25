@@ -6,7 +6,7 @@ import { CreateUser } from "../interfaces/user.interface";
 
 export async function userRoutes(fastify: FastifyInstance) {
 	const userUseCase = new UserUseCase();
-	fastify.post<{ Body: CreateUser }>("/", async (req, replay) => {
+	fastify.post<{ Body: CreateUser }>("/createUser", async (req, replay) => {
 		const { email, name } = req.body;
 		try {
 			const data = await userUseCase.create({
@@ -19,6 +19,6 @@ export async function userRoutes(fastify: FastifyInstance) {
 		}
 	});
 	fastify.get("/", (req, replay) => {
-		return replay.send({ message: "Hello World!" });
+		return replay.send({ message: "User created." });
 	});
 }

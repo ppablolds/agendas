@@ -8,7 +8,7 @@ import { authMiddleware } from "../middlewares/auth.middleware";
 export async function contactRoutes(fastify: FastifyInstance) {
 	const contactUseCase = new ContactUserCase();
 	fastify.addHook("preHandler", authMiddleware);
-	fastify.post<{ Body: CreateContact }>("/", async (req, replay) => {
+	fastify.post<{ Body: CreateContact }>("/createContact", async (req, replay) => {
 		const { email, name, phone } = req.body;
 		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 		const emailUser = req.headers["email"];
@@ -24,7 +24,7 @@ export async function contactRoutes(fastify: FastifyInstance) {
 			replay.send(error);
 		}
 	});
-	fastify.get("/", async (req, replay) => {
+	fastify.get("/listContact", async (req, replay) => {
 		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 		const emailUser = req.headers["email"];
 		try {
@@ -35,7 +35,7 @@ export async function contactRoutes(fastify: FastifyInstance) {
 		}
 	});
 	fastify.put<{ Body: Contact; Params: { id: string } }>(
-		"/:id",
+		"/updateContact/:id",
 		async (req, replay) => {
 			const { id } = req.params;
 			const { email, name, phone } = req.body;
@@ -53,7 +53,7 @@ export async function contactRoutes(fastify: FastifyInstance) {
 			}
 		},
 	);
-	fastify.delete<{Params: {id: string}}>("/:id", async (req, replay) => {
+	fastify.delete<{Params: {id: string}}>("/deleteContact/:id", async (req, replay) => {
 		const {id} = req.params;
 		try {
 			const data = await contactUseCase.deleteContact(id);
