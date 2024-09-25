@@ -16,7 +16,7 @@ Esta é a documentação de requisitos para a API de Agenda de Contatos. Esta AP
 
 ## Requisitos de Autenticação e Autorização
 
-- [ ] Autenticação de Usuários
+- [ X ] Autenticação de Usuários
 - [ ] Autorização de Acesso às Operações
 - [ X ] Criação de usuário
 
